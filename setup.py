@@ -1,12 +1,14 @@
 from setuptools import setup, find_packages
 
 requires = [
+    'genshi',
     'pyramid',
     'pyramid_tm',
     'pyramid_debugtoolbar',
     'sprox',
-    'SQLAlchemy',
+    'SQLAlchemy<0.7.99',
     'transaction',
+    'ToscaWidgets',
     'tw.forms',
     'waitress',
     'zope.sqlalchemy',
