@@ -11,9 +11,10 @@ from sqlalchemy import (
 from sqlalchemy.ext.declarative import declarative_base
 
 from sqlalchemy.orm import (
-    relation,
+    relationship,
     scoped_session,
     sessionmaker,
+    backref,
 )
 
 from zope.sqlalchemy import ZopeTransactionExtension
@@ -50,7 +51,7 @@ class Movie(Base):
     title = Column(String(100), nullable=False)
     description = Column(Text, nullable=True)
     genre_id = Column(Integer, ForeignKey('genre.id'))
-    genre = relation('Genre', backref='movies')
+    genre = relationship('Genre', primaryjoin=genre_id == Genre.id)
     release_date = Column(Date, nullable=True)
 
 class Director(Base):
@@ -58,8 +59,8 @@ class Director(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String(100), nullable=False)
 
-    movies = relation(
-        Movie,
+    movies = relationship(
+        'Movie',
         secondary=movie_directors_table,
         backref="directors",
     )

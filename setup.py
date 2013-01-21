@@ -15,7 +15,7 @@ requires = [
     'waitress',
     'zope.sqlalchemy',
     'tw2.forms',
-    'sprox'
+    'sprox >= 0.8.2'
 
 ]
 
