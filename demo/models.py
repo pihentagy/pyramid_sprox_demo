@@ -14,6 +14,7 @@ from sqlalchemy.orm import (
     relation,
     scoped_session,
     sessionmaker,
+    backref,
 )
 
 from zope.sqlalchemy import ZopeTransactionExtension
@@ -50,7 +51,7 @@ class Movie(Base):
     title = Column(String(100), nullable=False)
     description = Column(Text, nullable=True)
     genre_id = Column(Integer, ForeignKey('genre.id'))
-    genre = relation('Genre', backref='movies')
+    genre = relation('Genre', backref=backref('movies'))
     release_date = Column(Date, nullable=True)
 
 class Director(Base):
@@ -61,5 +62,5 @@ class Director(Base):
     movies = relation(
         Movie,
         secondary=movie_directors_table,
-        backref="directors",
+        backref=backref("directors"),
     )
