@@ -1,9 +1,9 @@
 from pyramid.config import Configurator
 from sqlalchemy import engine_from_config
 
-import tw.api
-
+import tw2.core
 from .models import DBSession
+
 
 def main(global_config, **settings):
     engine = engine_from_config(settings, 'sqlalchemy.')
@@ -11,11 +11,11 @@ def main(global_config, **settings):
 
     config = Configurator(settings=settings)
 
-    config.add_route('movies.new', 'movies/new')
+    config.add_route('movies_new', '/')
     config.scan('.views')
 
     app = config.make_wsgi_app()
-    app = tw.api.make_middleware(
+    app = tw2.core.make_middleware(
         app,
         {
             'toscawidgets.framework' : 'wsgi',

@@ -11,8 +11,8 @@ class NewMovieForm(AddRecordForm):
     __model__ = Movie
 
 @view_config(
-    route_name='movies.new',
-    renderer='demo:templates/new_movies.html.mako',
+    route_name='movies_new',
+    renderer='demo:templates/new_movies.pt',
 )
 def new_movies_view(request):
     new_movie_form = NewMovieForm(DBSession)

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sprox Demo</title>
+</head>
+<body>
+  <h2>Create New Movie</h2>
+  ${form() | n}
+</body>
+</html>
+

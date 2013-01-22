@@ -11,7 +11,7 @@ from sqlalchemy import (
 from sqlalchemy.ext.declarative import declarative_base
 
 from sqlalchemy.orm import (
-    relation,
+    relationship,
     scoped_session,
     sessionmaker,
 )
@@ -39,27 +39,30 @@ movie_directors_table = Table(
 )
 
 class Genre(Base):
-    __tablename__ = "genre"
+    __tablename__ = 'genre'
     id = Column(Integer, primary_key=True)
     name = Column(String(100))
     description = Column(String(200))
 
 class Movie(Base):
-    __tablename__ = "movie"
+    __tablename__ = 'movie'
     id = Column(Integer, primary_key=True)
     title = Column(String(100), nullable=False)
     description = Column(Text, nullable=True)
     genre_id = Column(Integer, ForeignKey('genre.id'))
-    genre = relation('Genre', backref='movies')
+    genre = relationship('Genre', backref='movies')
     release_date = Column(Date, nullable=True)
 
 class Director(Base):
-    __tablename__ = "director"
+    __tablename__ = 'director'
     id = Column(Integer, primary_key=True)
     title = Column(String(100), nullable=False)
 
-    movies = relation(
+    movies = relationship(
         Movie,
         secondary=movie_directors_table,
-        backref="directors",
+        backref='directors',
     )
+
+    def __str__(self):
+        return self.title
