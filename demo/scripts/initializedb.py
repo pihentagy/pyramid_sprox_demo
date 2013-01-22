@@ -12,6 +12,8 @@ from pyramid.paster import (
 from ..models import (
     DBSession,
     Base,
+    Genre,
+    Director,
 )
 
 
@@ -31,4 +33,6 @@ def main(argv=sys.argv):
     engine = engine_from_config(settings, 'sqlalchemy.')
     DBSession.configure(bind=engine)
     Base.metadata.create_all(engine)
-
+    with transaction.manager:
+        DBSession.add(Genre(name='action'))
+        DBSession.add(Director(title='Steven Spielberg'))
