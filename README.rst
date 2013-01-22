@@ -9,4 +9,4 @@ This demo just shows the setup required to get Sprox working under Pyramid.
     env/bin/demo_initdb development.ini
     env/bin/pserve development.ini
 
-Visit http://localhost:6543/movies/new.
+Visit http://localhost:6543/.

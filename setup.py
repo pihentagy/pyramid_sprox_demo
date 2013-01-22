@@ -1,10 +1,4 @@
-import os
-
 from setuptools import setup, find_packages
-
-here = os.path.abspath(os.path.dirname(__file__))
-README = open(os.path.join(here, 'README.rst')).read()
-CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 requires = [
     'pyramid',
@@ -19,29 +13,19 @@ requires = [
 
 ]
 
-setup(name='demo',
-      version='0.0',
-      description='sprox_demo',
-      long_description=README + '\n\n' + CHANGES,
-      classifiers=[
-        "Programming Language :: Python",
-        "Framework :: Pyramid",
-        "Topic :: Internet :: WWW/HTTP",
-        "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
-        ],
-      author='',
-      author_email='',
-      url='',
-      keywords='web wsgi bfg pylons pyramid',
+setup(
+    name='demo',
+    version='0.0',
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
-    test_suite='demo',
     install_requires=requires,
-      entry_points="""\
-      [paste.app_factory]
-      main = demo:main
-      [console_scripts]
-      initialize_demo_db = demo.scripts.initializedb:main
-      """,
+    entry_points={
+        'paste.app_factory': [
+            'main = demo:main',
+        ],
+        'console_scripts': [
+            'demo_initdb = demo.scripts.initdb:main',
+        ],
+    },
 )
