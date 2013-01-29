@@ -4,6 +4,12 @@
   <title>Sprox Demo</title>
 </head>
 <body>
+  <div id="flash" tal:condition="request.session.peek_flash()">
+  <span tal:omit-tag="" tal:repeat="message request.session.pop_flash()">
+  ${message}<br>
+  </span>
+  </div>
+
   <h2>Create New Movie</h2>
   ${form() | n}
 </body>
