@@ -13,6 +13,7 @@ requires = [
     'pyramid_debugtoolbar',
     'zope.sqlalchemy',
     'waitress',
+    'tw2.core',
     'tw2.forms',
     'sprox>=0.8.2'
 
