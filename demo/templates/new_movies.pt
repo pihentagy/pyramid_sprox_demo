@@ -2,6 +2,18 @@
 <html>
 <head>
   <title>Sprox Demo</title>
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.8.1/build/cssreset/cssreset-min.css">
+  <style>
+  #flash { padding: 3em; background: yellow; margin: 0 auto 0 auto; width: auto;}
+  *, html {font-family: sans-serif; }
+  form tr { vertical-align: top; }
+  form tr.odd *{ background-color: #ccc; }
+  form tr.even *{ background-color: #ddd; }
+  form tr.required th:after { content:"*";}
+  form tr.error { background-color: #fbb; }
+  form tr.error td span[id$='error'] { float: left;background-color:red; }
+  form tr.error td input { clear: both; }
+  </style>
 </head>
 <body>
   <div id="flash" tal:condition="request.session.peek_flash()">
